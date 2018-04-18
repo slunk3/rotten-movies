@@ -34,7 +34,7 @@ class MoviePage extends React.Component {
     }
 
     selectMovie(e) {
-        console.log(e.target.dataset.letter);
+        console.log(e.target.dataset.score);
     }
 
     getMovieName() {
