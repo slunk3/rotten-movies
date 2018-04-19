@@ -11,11 +11,19 @@ class MovieButton extends React.Component {
 
     render() {
         return <div>
-            <button className="btn movie-btn" onClick={this.props.selectMovie} data-score={this.props.score}>
+            <button className="btn movie-btn" 
+                onClick={this.props.compareMovieScores} 
+                data-score={this.props.score}>
               {this.props.value}
             </button>
           </div>;
     }
 }
+
+MovieButton.propTypes = {
+    compareMovieScores: PropTypes.func.isRequired,
+    score: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired
+};
 
 export default MovieButton;

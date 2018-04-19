@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import {random} from 'lodash';
-import movieData from '../api/movieData';
-import MoviePanel from '../components/MoviePanel';
+import movieData from '../../api/movieData';
+import MoviePanel from './MoviePanel';
 
-class MoviePage extends React.Component {
+class Movies extends React.Component {
     constructor(props) {
         super(props);
         this.movieCount = 170;
@@ -13,11 +13,13 @@ class MoviePage extends React.Component {
 
         this.state = {
             error: null,
-            movieDetailsArray: []
+            movieDetailsArray: [],
+            movieScores: []
          };
 
          this.initialState = this.state;
          this.reloadChoices = this.reloadChoices.bind(this);
+         this.compareMovieScores = this.compareMovieScores.bind(this);
     }
 
     componentDidMount() {
@@ -33,13 +35,31 @@ class MoviePage extends React.Component {
         }
     }
 
-    selectMovie(e) {
-        console.log(e.target.dataset.score);
-    }
-
     getMovieName() {
         let num = random(0, this.movieCount);
         return movieData[num]; 
+    }
+
+    compareMovieScores(e) {
+        let selectionScore = e.target.dataset.score;
+        let challengeScore;
+        let movieChoices = this.state.movieScores;
+        movieChoices.map(score => {
+            if (selectionScore !== score) {
+              challengeScore = score;
+            }
+        });
+
+        selectionScore = parseInt(selectionScore);
+        challengeScore = parseInt(challengeScore);
+
+        if(challengeScore < selectionScore) {
+            console.log('ya won my dude');
+        } else if(challengeScore === selectionScore) {
+            console.log('itsa tie');
+        } else {
+            console.log('YOU LOSE');
+        }
     }
 
     getMovieDetails() {
@@ -47,16 +67,17 @@ class MoviePage extends React.Component {
             .then(r => r.json())
             .then(
                 result => {
-                    console.log(result);
+                    let movieScore = result.Ratings[1].Value.slice(0, -1);
                     this.setState((prevState) => {
                         return {
-                            movieDetailsArray: [...prevState.movieDetailsArray, result]
+                            movieDetailsArray: [...prevState.movieDetailsArray, result],
+                            movieScores: [...prevState.movieScores, movieScore]
                         };
                     });
                 }, 
                 error => {
                     this.setState({ error });
-                });
+                });           
     }
 
     render() {        
@@ -67,7 +88,7 @@ class MoviePage extends React.Component {
                        if(this.state.movieDetailsArray.length) {
                             return <MoviePanel key={movie.imdbID} 
                                 movie={movie} 
-                                selectMovie={this.selectMovie} />;
+                                compareMovieScores={this.compareMovieScores} />;
                        } 
                     })
                 }
@@ -79,4 +100,4 @@ class MoviePage extends React.Component {
     }
 }
 
-export default MoviePage;
+export default Movies;

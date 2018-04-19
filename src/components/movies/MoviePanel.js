@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDom from 'react-dom';
-import MoviePage from './MoviePage';
+import MoviePage from '../App';
 import Button from './MovieButton';
 
 const wrapperClass = "movie";
@@ -29,7 +29,7 @@ class MoviePanel extends React.Component{
                      (<img src={this.props.movie.Poster} />)}
                     <Button score={rottenScore} 
                         value={this.props.movie.Title}
-                        selectMovie={this.props.selectMovie} />
+                        compareMovieScores={this.props.compareMovieScores} />
                 </div>
             </div>;
     }
@@ -37,7 +37,7 @@ class MoviePanel extends React.Component{
 
 MoviePanel.propTypes = {
   movie: PropTypes.object.isRequired,
-  selectMovie: PropTypes.func.isRequired
+  compareMovieScores: PropTypes.func.isRequired
 };
 
 export default MoviePanel;
