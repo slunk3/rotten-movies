@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from "react-dom";
-import PropTypes from "prop-types";
 import {random} from 'lodash';
 import movieData from '../../api/movieData';
 import MoviePanel from './MoviePanel';
@@ -43,11 +42,11 @@ class Movies extends React.Component {
     compareMovieScores(e) {
         let selectionScore = e.target.dataset.score;
         let challengeScore;
-        let movieChoices = this.state.movieScores;
-        movieChoices.map(score => {
-            if (selectionScore !== score) {
-              challengeScore = score;
-            }
+        let movieScores = this.state.movieScores;
+        movieScores.map(score => {
+          if (selectionScore !== score) {
+            challengeScore = score;
+          }
         });
 
         selectionScore = parseInt(selectionScore);
