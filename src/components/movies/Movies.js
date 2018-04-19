@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from "react-dom";
+import PropTypes from "prop-types";
 import {random} from 'lodash';
 import movieData from '../../api/movieData';
 import MoviePanel from './MoviePanel';
@@ -43,6 +44,7 @@ class Movies extends React.Component {
         let selectionScore = e.target.dataset.score;
         let challengeScore;
         let movieScores = this.state.movieScores;
+
         movieScores.map(score => {
           if (selectionScore !== score) {
             challengeScore = score;
@@ -54,11 +56,18 @@ class Movies extends React.Component {
 
         if(challengeScore < selectionScore) {
             console.log('ya won my dude');
+            this.handleSelection(1);
         } else if(challengeScore === selectionScore) {
             console.log('itsa tie');
+            this.handleSelection(0);            
         } else {
             console.log('YOU LOSE');
+            this.handleSelection(-1);            
         }
+    }
+
+    handleSelection(point) {
+        this.props.onSelection(point);
     }
 
     getMovieDetails() {
@@ -82,6 +91,9 @@ class Movies extends React.Component {
     render() {        
         return (
             <div>
+                <button type="button" onClick={this.reloadChoices}>
+                    Load new titles
+                </button>
                 {
                     this.state.movieDetailsArray.map(movie => {
                        if(this.state.movieDetailsArray.length) {
@@ -91,12 +103,13 @@ class Movies extends React.Component {
                        } 
                     })
                 }
-                <button type="button" onClick={this.reloadChoices}>
-                    Load new titles
-                </button>
             </div>
         );
     }
 }
+
+Movies.propTypes = {
+    onSelection: PropTypes.func.isRequired
+};
 
 export default Movies;
