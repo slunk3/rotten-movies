@@ -2,15 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 
-const PlayerForm = ({onChange,onSave}) => {
-  return (
-    <form onSubmit={onSave}>
-      <label>
-        Name:
-        <input type="text" onChange={onChange} />
-      </label>
-    </form>
-  );
+const PlayerForm = ({ onChange, onSave }) => {
+    return (
+        <form onSubmit={onSave}>
+            <label>
+                Name:
+                <input type="text" onChange={onChange} />
+            </label>
+        </form>
+    );
 };
 
 PlayerForm.propTypes = {

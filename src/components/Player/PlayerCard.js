@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 
-const PlayerCard = ({name, playerScore}) => {
+const PlayerCard = ({ name, playerScore }) => {
     return (
         <div>
             <div>

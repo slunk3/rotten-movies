@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 import ReactDOM from "react-dom";
 import Movies from "./movies/Movies";
-import Player from './Player/Player';
+import Player from "./Player/Player";
 
 class App extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
 
         this.state = {
@@ -17,17 +17,21 @@ class App extends React.Component {
 
     handleScore(point) {
         let score = this.state.playerScore + point;
-        console.log(score);
-        this.setState((prevState) => {
+        this.setState(prevState => {
             return { playerScore: score };
         });
     }
 
-    render() {        
-        return <div>
-            <Player playerScore={this.state.playerScore} />
-            <Movies playerScore={this.state.playerScore} onSelection={this.handleScore} />
-          </div>;
+    render() {
+        return (
+            <div>
+                <Player playerScore={this.state.playerScore} />
+                <Movies
+                    playerScore={this.state.playerScore}
+                    onSelection={this.handleScore}
+                />
+            </div>
+        );
     }
 }
 
