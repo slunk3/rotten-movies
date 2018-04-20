@@ -4,12 +4,18 @@ import PropTypes from "prop-types";
 import { random } from "lodash";
 import movieData from "../../api/movieData";
 import MoviePanel from "./MoviePanel";
+import * as constants from "../../common/constants";
 
 class Movies extends React.Component {
     constructor(props) {
         super(props);
-        this.movieCount = 170;
-        this.panels = 2;
+
+        /* eslint-disable no-console */
+        console.log(movieData.length + " movies in list");
+        /* eslint-enable no-console */
+
+        this.movieCount = constants.MOVIE_LIST_LENGTH;
+        this.panels = constants.MOVIE_PANELS;
 
         this.state = {
             error: null,
