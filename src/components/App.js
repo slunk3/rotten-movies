@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Movies from "./movies/Movies";
 import Player from "./Player/Player";
+import Answer from "./Answer";
 
 class App extends React.Component {
     constructor(props) {
@@ -10,6 +11,7 @@ class App extends React.Component {
         this.state = {
             playerScore: 0,
             currentStreak: 0,
+            isCorrect: null,
         };
 
         this.handleScore = this.handleScore.bind(this);
@@ -18,20 +20,27 @@ class App extends React.Component {
     handleScore(point) {
         let score = this.state.playerScore + point;
         let streak = this.state.currentStreak;
-        //debugger;
+        let correct = false;
+
         switch (point > 0) {
             case true:
                 streak++;
+                correct = true;
                 break;
             case false:
                 streak = 0;
+                correct = false;
                 break;
             default:
                 break;
         }
-        console.log("streak" + streak);
+
         this.setState(prevState => {
-            return { playerScore: score, currentStreak: streak };
+            return {
+                playerScore: score,
+                currentStreak: streak,
+                isCorrect: correct,
+            };
         });
     }
 
@@ -46,6 +55,7 @@ class App extends React.Component {
                     playerScore={this.state.playerScore}
                     playerStreak={this.state.currentStreak}
                 />
+                <Answer isCorrect={this.state.isCorrect} />
                 <Movies
                     playerScore={this.state.playerScore}
                     onSelection={this.handleScore}
