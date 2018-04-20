@@ -166,5 +166,11 @@ module.exports = [
     "Midnight in Paris",
     "Coming to America",
     "Swiss Army Man",
-    "Good Time"
+    "Good Time",
+    "A Ghost Story",
+    "Free Fire",
+    "Atomic Blonde",
+    "Annihilation",
+    "Star Wars",
+    "Star Wars: Episode IV - A New Hope",
 ];
