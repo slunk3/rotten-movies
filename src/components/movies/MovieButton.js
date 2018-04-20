@@ -26,7 +26,7 @@ class MovieButton extends React.Component {
 MovieButton.propTypes = {
     compareMovieScores: PropTypes.func.isRequired,
     score: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired
+    value: PropTypes.string.isRequired,
 };
 
 export default MovieButton;

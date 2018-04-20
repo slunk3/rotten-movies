@@ -14,7 +14,7 @@ class Movies extends React.Component {
         this.state = {
             error: null,
             movieDetailsArray: [],
-            movieScores: []
+            movieScores: [],
         };
 
         this.initialState = this.state;
@@ -55,10 +55,13 @@ class Movies extends React.Component {
         challengeScore = parseInt(challengeScore);
 
         if (challengeScore < selectionScore) {
+            console.log("win");
             this.handleSelection(1);
         } else if (challengeScore === selectionScore) {
+            console.log("draw");
             this.handleSelection(0);
         } else {
+            console.log("lose");
             this.handleSelection(-1);
         }
     }
@@ -77,9 +80,9 @@ class Movies extends React.Component {
                         return {
                             movieDetailsArray: [
                                 ...prevState.movieDetailsArray,
-                                result
+                                result,
                             ],
-                            movieScores: [...prevState.movieScores, movieScore]
+                            movieScores: [...prevState.movieScores, movieScore],
                         };
                     });
                 },
@@ -112,7 +115,7 @@ class Movies extends React.Component {
 }
 
 Movies.propTypes = {
-    onSelection: PropTypes.func.isRequired
+    onSelection: PropTypes.func.isRequired,
 };
 
 export default Movies;

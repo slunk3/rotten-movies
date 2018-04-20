@@ -9,7 +9,7 @@ class Player extends React.Component {
         super(props);
 
         this.state = {
-            name: null
+            name: null,
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -34,6 +34,7 @@ class Player extends React.Component {
                 <PlayerCard
                     name={this.state.name}
                     playerScore={this.props.playerScore}
+                    playerStreak={this.props.playerStreak}
                 />
             </div>
         );
@@ -41,7 +42,8 @@ class Player extends React.Component {
 }
 
 Player.propTypes = {
-    playerScore: PropTypes.number.isRequired
+    playerScore: PropTypes.number.isRequired,
+    playerStreak: PropTypes.number.isRequired,
 };
 
 export default Player;

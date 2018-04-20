@@ -5,7 +5,7 @@ module.exports = {
     entry: "./src/index.js",
     output: {
         path: path.resolve(__dirname, "dist"),
-        filename: "bundle.js"
+        filename: "bundle.js",
     },
     mode: "development",
     module: {
@@ -16,24 +16,24 @@ module.exports = {
                 use: {
                     loader: "babel-loader",
                     options: {
-                        presets: ["env", "es2015"]
-                    }
-                }
+                        presets: ["env", "es2015"],
+                    },
+                },
             },
             {
                 test: /\.html$/,
                 use: [
                     {
-                        loader: "html-loader"
-                    }
-                ]
-            }
-        ]
+                        loader: "html-loader",
+                    },
+                ],
+            },
+        ],
     },
     plugins: [
         new HtmlWebPackPlugin({
             template: "./src/index.html",
-            filename: "./index.html"
-        })
-    ]
+            filename: "./index.html",
+        }),
+    ],
 };

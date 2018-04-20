@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 
-const PlayerCard = ({ name, playerScore }) => {
+const PlayerCard = ({ name, playerScore, playerStreak }) => {
     return (
         <div>
             <div>
@@ -12,15 +12,16 @@ const PlayerCard = ({ name, playerScore }) => {
                 Score: <span>{playerScore}</span>
             </div>
             <div>
-                Streak: <span>{}</span>
+                Streak: <span>{playerStreak}</span>
             </div>
         </div>
     );
 };
 
 PlayerCard.propTypes = {
-    name: PropTypes.func.isRequired,
-    playerScore: PropTypes.func.isRequired
+    name: PropTypes.string,
+    playerScore: PropTypes.number.isRequired,
+    playerStreak: PropTypes.number.isRequired,
 };
 
 export default PlayerCard;

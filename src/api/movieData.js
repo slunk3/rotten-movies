@@ -171,6 +171,5 @@ module.exports = [
     "Free Fire",
     "Atomic Blonde",
     "Annihilation",
-    "Star Wars",
     "Star Wars: Episode IV - A New Hope",
 ];

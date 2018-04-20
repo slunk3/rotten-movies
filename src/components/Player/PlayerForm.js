@@ -15,7 +15,7 @@ const PlayerForm = ({ onChange, onSave }) => {
 
 PlayerForm.propTypes = {
     onChange: PropTypes.func.isRequired,
-    onSave: PropTypes.func.isRequired
+    onSave: PropTypes.func.isRequired,
 };
 
 export default PlayerForm;

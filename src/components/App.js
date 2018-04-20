@@ -9,7 +9,7 @@ class App extends React.Component {
 
         this.state = {
             playerScore: 0,
-            currentStreak: 0
+            currentStreak: 0,
         };
 
         this.handleScore = this.handleScore.bind(this);
@@ -17,15 +17,35 @@ class App extends React.Component {
 
     handleScore(point) {
         let score = this.state.playerScore + point;
+        let streak = this.state.currentStreak;
+        //debugger;
+        switch (point > 0) {
+            case true:
+                streak++;
+                break;
+            case false:
+                streak = 0;
+                break;
+            default:
+                break;
+        }
+        console.log("streak" + streak);
         this.setState(prevState => {
-            return { playerScore: score };
+            return { playerScore: score, currentStreak: streak };
         });
     }
 
     render() {
         return (
             <div>
-                <Player playerScore={this.state.playerScore} />
+                <header>
+                    <h1>Rotten Movies</h1>
+                    <h2>Pick the less rotten movie</h2>
+                </header>
+                <Player
+                    playerScore={this.state.playerScore}
+                    playerStreak={this.state.currentStreak}
+                />
                 <Movies
                     playerScore={this.state.playerScore}
                     onSelection={this.handleScore}

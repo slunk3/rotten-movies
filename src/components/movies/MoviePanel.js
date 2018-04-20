@@ -42,7 +42,7 @@ class MoviePanel extends React.Component {
 
 MoviePanel.propTypes = {
     movie: PropTypes.object.isRequired,
-    compareMovieScores: PropTypes.func.isRequired
+    compareMovieScores: PropTypes.func.isRequired,
 };
 
 export default MoviePanel;
