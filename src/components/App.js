@@ -1,8 +1,8 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import Movies from "./movies/Movies";
-import Player from "./Player/Player";
-import Answer from "./Answer";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Movies from './movies/Movies';
+import Player from './player/Player';
+import Answer from './Answer';
 
 class App extends React.Component {
     constructor(props) {

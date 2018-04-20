@@ -1,21 +1,24 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import PropTypes from "prop-types";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 
-const PlayerForm = ({ onChange, onSave }) => {
-    return (
-        <form onSubmit={onSave}>
-            <label>
-                Name:
-                <input type="text" onChange={onChange} />
-            </label>
-        </form>
-    );
+const PlayerForm = ({ onBlur, name }) => {
+    if (name === null) {
+        return (
+            <form>
+                <label>
+                    Name:
+                    <input type="text" onBlur={onBlur} />
+                </label>
+            </form>
+        );
+    } else {
+        return null;
+    }
 };
 
 PlayerForm.propTypes = {
-    onChange: PropTypes.func.isRequired,
-    onSave: PropTypes.func.isRequired,
+    onBlur: PropTypes.func.isRequired,
 };
 
 export default PlayerForm;

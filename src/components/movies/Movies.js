@@ -1,17 +1,17 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import PropTypes from "prop-types";
-import { random } from "lodash";
-import movieData from "../../api/movieData";
-import MoviePanel from "./MoviePanel";
-import * as constants from "../../common/constants";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
+import { random } from 'lodash';
+import movieData from '../../api/movieData';
+import MoviePanel from './MoviePanel';
+import * as constants from '../../common/constants';
 
 class Movies extends React.Component {
     constructor(props) {
         super(props);
 
         /* eslint-disable no-console */
-        console.log(movieData.length + " movies in list");
+        console.log(movieData.length + ' movies in list');
         /* eslint-enable no-console */
 
         this.movieCount = constants.MOVIE_LIST_LENGTH;
@@ -61,13 +61,10 @@ class Movies extends React.Component {
         challengeScore = parseInt(challengeScore);
 
         if (challengeScore < selectionScore) {
-            console.log("win");
             this.handleSelection(1);
         } else if (challengeScore === selectionScore) {
-            console.log("draw");
             this.handleSelection(0);
         } else {
-            console.log("lose");
             this.handleSelection(-1);
         }
     }
@@ -77,20 +74,27 @@ class Movies extends React.Component {
     }
 
     getMovieDetails() {
-        fetch("//www.omdbapi.com/?apikey=88165bfc&t=" + this.getMovieName())
+        fetch('//www.omdbapi.com/?apikey=88165bfc&t=' + this.getMovieName())
             .then(r => r.json())
             .then(
                 result => {
-                    let movieScore = result.Ratings[1].Value.slice(0, -1);
-                    this.setState(prevState => {
-                        return {
-                            movieDetailsArray: [
-                                ...prevState.movieDetailsArray,
-                                result,
-                            ],
-                            movieScores: [...prevState.movieScores, movieScore],
-                        };
-                    });
+                    if (result.Ratings[1] !== undefined) {
+                        let movieScore = result.Ratings[1].Value.slice(0, -1);
+                        this.setState(prevState => {
+                            return {
+                                movieDetailsArray: [
+                                    ...prevState.movieDetailsArray,
+                                    result,
+                                ],
+                                movieScores: [
+                                    ...prevState.movieScores,
+                                    movieScore,
+                                ],
+                            };
+                        });
+                    } else {
+                        return;
+                    }
                 },
                 error => {
                     this.setState({ error });

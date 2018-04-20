@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import ReactDom from "react-dom";
-import MoviePanel from "./MoviePanel";
+import React from 'react';
+import PropTypes from 'prop-types';
+import ReactDom from 'react-dom';
+import MoviePanel from './MoviePanel';
 
 class MovieButton extends React.Component {
     constructor(props) {
