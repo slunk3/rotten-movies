@@ -1,0 +1,16 @@
+$theme-font: Arial, sans-serif;
+
+.container {
+    display: flex;
+    color: #333333;
+    font-family: $theme-font;
+}
+
+header,
+main {
+    display: inline-block;
+}
+
+.movie {
+    display: inline-block;
+}

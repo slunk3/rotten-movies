@@ -15,6 +15,7 @@ class App extends React.Component {
         };
 
         this.handleScore = this.handleScore.bind(this);
+        this.handleReload = this.handleReload.bind(this);
     }
 
     handleScore(point) {
@@ -35,6 +36,8 @@ class App extends React.Component {
                 break;
         }
 
+        score > 0 ? score : (score = 0);
+
         this.setState(prevState => {
             return {
                 playerScore: score,
@@ -44,21 +47,30 @@ class App extends React.Component {
         });
     }
 
+    handleReload() {
+        this.setState(prevState => {
+            return {
+                isCorrect: null,
+            };
+        });
+    }
+
     render() {
         return (
-            <div>
+            <div className="container">
                 <header>
                     <h1>Rotten Movies</h1>
                     <h2>Pick the less rotten movie</h2>
+                    <Player
+                        playerScore={this.state.playerScore}
+                        playerStreak={this.state.currentStreak}
+                    />
                 </header>
-                <Player
-                    playerScore={this.state.playerScore}
-                    playerStreak={this.state.currentStreak}
-                />
                 <Answer isCorrect={this.state.isCorrect} />
                 <Movies
                     playerScore={this.state.playerScore}
                     onSelection={this.handleScore}
+                    onReload={this.handleReload}
                 />
             </div>
         );
