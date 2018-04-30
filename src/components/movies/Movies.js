@@ -21,7 +21,6 @@ class Movies extends React.Component {
             error: null,
             movieDetailsArray: [],
             movieScores: [],
-            reloadMovies: this.props.reloadMovies,
         };
 
         this.initialState = this.state;
@@ -124,7 +123,6 @@ class Movies extends React.Component {
 
 Movies.propTypes = {
     onSelection: PropTypes.func.isRequired,
-    reloadMovies: PropTypes.bool.isRequired,
 };
 
 export default Movies;

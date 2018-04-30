@@ -12,7 +12,6 @@ class App extends React.Component {
             playerScore: 0,
             currentStreak: 0,
             isCorrect: null,
-            reload: false,
         };
 
         this.handleScore = this.handleScore.bind(this);
@@ -52,9 +51,10 @@ class App extends React.Component {
         this.setState(prevState => {
             return {
                 isCorrect: null,
-                reload: true,
             };
         });
+
+        this._child.reloadChoices();
     }
 
     render() {
@@ -74,7 +74,7 @@ class App extends React.Component {
                     <Movies
                         playerScore={this.state.playerScore}
                         onSelection={this.handleScore}
-                        reloadMovies={this.state.reload}
+                        ref={child => (this._child = child)}
                     />
                 </main>
             </div>
