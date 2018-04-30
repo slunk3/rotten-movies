@@ -27,3 +27,5 @@ node_modules/
 Webpackjs storage and output
 .cache
 dist
+
+.DS_Store

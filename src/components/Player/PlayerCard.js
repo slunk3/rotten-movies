@@ -4,15 +4,17 @@ import PropTypes from 'prop-types';
 
 const PlayerCard = ({ name, playerScore, playerStreak }) => {
     return (
-        <div>
+        <div className="playerCard">
             <div>
-                <h2>{name}</h2>
+                <h3>AKB</h3>
             </div>
-            <div>
-                Score: <span>{playerScore}</span>
+            <div className="stats">
+                Score
+                <h4>{playerScore}</h4>
             </div>
-            <div>
-                Streak: <span>{playerStreak}</span>
+            <div className="stats">
+                Streak
+                <h4>{playerStreak}</h4>
             </div>
         </div>
     );

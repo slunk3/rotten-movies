@@ -12,6 +12,7 @@ class App extends React.Component {
             playerScore: 0,
             currentStreak: 0,
             isCorrect: null,
+            reload: false,
         };
 
         this.handleScore = this.handleScore.bind(this);
@@ -51,6 +52,7 @@ class App extends React.Component {
         this.setState(prevState => {
             return {
                 isCorrect: null,
+                reload: true,
             };
         });
     }
@@ -60,18 +62,21 @@ class App extends React.Component {
             <div className="container">
                 <header>
                     <h1>Rotten Movies</h1>
-                    <h2>Pick the less rotten movie</h2>
+                    <h2>Pick the least rotten movie</h2>
+                    <Answer isCorrect={this.state.isCorrect} />
+                </header>
+                <main>
                     <Player
                         playerScore={this.state.playerScore}
                         playerStreak={this.state.currentStreak}
+                        onReload={this.handleReload}
                     />
-                </header>
-                <Answer isCorrect={this.state.isCorrect} />
-                <Movies
-                    playerScore={this.state.playerScore}
-                    onSelection={this.handleScore}
-                    onReload={this.handleReload}
-                />
+                    <Movies
+                        playerScore={this.state.playerScore}
+                        onSelection={this.handleScore}
+                        reloadMovies={this.state.reload}
+                    />
+                </main>
             </div>
         );
     }

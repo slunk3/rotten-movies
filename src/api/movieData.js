@@ -83,7 +83,7 @@ module.exports = [
     'Above the Law',
     'Hancock',
     'The Perfect Storm',
-    'The Rover',
+    'Miami Connection',
     'Last Man Standing',
     'Blue Thunder',
     'Twister',

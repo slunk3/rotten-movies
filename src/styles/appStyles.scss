@@ -1,16 +1,122 @@
-$theme-font: Arial, sans-serif;
+$theme-font: 'Roboto Mono', monospace;
+$game-font: 'Press Start 2P', cursive;
+$text-color: #e5e7eb;
 
-.container {
-    display: flex;
-    color: #333333;
+body {
+    background-color: #222222;
+    color: $text-color;
     font-family: $theme-font;
 }
 
-header,
+.container {
+    padding: 25px;
+}
+
+header {
+    width: 100%;
+
+    h1 {
+        font-size: 35px;
+        margin: 0;
+        text-transform: uppercase;
+    }
+
+    h2 {
+        font-size: 15px;
+        margin: 0;        
+    }
+}
+
 main {
-    display: inline-block;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+section,
+aside {
+    flex-grow: 1;
+}
+
+section {
+    width: 75%;
+}
+
+aside {
+    text-align: center;
+    width: 25%;
+
+    .reloadMovies {
+        border: none;
+        background-color: #086788;
+        color: #e5e7eb;
+        margin-top: 30px;
+        padding: 10px 20px;
+        text-transform: uppercase;     
+    }
+
+    span {
+        display: block;
+        margin-top: 12px;
+        font-size: 12px;
+    }
 }
 
 .movie {
     display: inline-block;
+    text-align: center;
+    margin: 0 20px;
+    width: 375px;
+
+    h2 {
+        font-size: 26px;
+        height: 65px;
+        text-align: left;
+        text-transform: uppercase;
+    }
+
+    img {
+        border: 5px solid $text-color;
+        height: 550px;
+        width: 370px;
+    }
+
+    .movie-btn {
+        border: none;
+        background-color: #dd1c1a;
+        color: #ffffff;
+        margin-top: 35px;
+        padding: 10px 20px;
+        text-transform: uppercase;
+    }
+}
+
+.playerCard {
+    background-color: #1966ff;
+    border: 3px solid #2b1579;
+    line-height: 1;
+    text-transform: uppercase;
+
+    h3 {
+        font-family: $game-font;
+        font-size: 36px;
+        letter-spacing: 4pt;
+    }
+
+    .stats {
+        color: #adc9ff;        
+        font-size: 26px;
+        margin: 44px 0;
+
+        h4 {
+            color: #00ff5f;
+            font-family: $game-font;
+            font-size: 36px;
+            margin: 10px 0;
+        }
+    }
+}
+
+.hide {
+    display: none;
 }

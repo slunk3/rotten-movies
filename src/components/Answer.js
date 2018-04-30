@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 
 const Answer = result => {
     let answer = result.isCorrect;
-    console.log(answer);
     if (answer !== null) {
         if (answer) {
             return <h3>CORRECT!</h3>;

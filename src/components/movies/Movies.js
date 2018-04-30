@@ -21,6 +21,7 @@ class Movies extends React.Component {
             error: null,
             movieDetailsArray: [],
             movieScores: [],
+            reloadMovies: this.props.reloadMovies,
         };
 
         this.initialState = this.state;
@@ -36,7 +37,6 @@ class Movies extends React.Component {
 
     reloadChoices() {
         this.setState(this.initialState);
-        this.handleReload();
         for (let i = 0; i < 2; i++) {
             this.getMovieDetails();
         }
@@ -74,10 +74,6 @@ class Movies extends React.Component {
         this.props.onSelection(point);
     }
 
-    handleReload() {
-        this.props.onReload();
-    }
-
     getMovieDetails() {
         fetch('//www.omdbapi.com/?apikey=88165bfc&t=' + this.getMovieName())
             .then(r => r.json())
@@ -109,14 +105,7 @@ class Movies extends React.Component {
 
     render() {
         return (
-            <main>
-                <button
-                    type="button"
-                    onClick={this.reloadChoices}
-                    className="reloadMovies"
-                >
-                    Load new titles
-                </button>
+            <section>
                 {this.state.movieDetailsArray.map(movie => {
                     if (this.state.movieDetailsArray.length) {
                         return (
@@ -128,13 +117,14 @@ class Movies extends React.Component {
                         );
                     }
                 })}
-            </main>
+            </section>
         );
     }
 }
 
 Movies.propTypes = {
     onSelection: PropTypes.func.isRequired,
+    reloadMovies: PropTypes.bool.isRequired,
 };
 
 export default Movies;
