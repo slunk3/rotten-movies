@@ -80,6 +80,15 @@ class Movies extends React.Component {
                 result => {
                     if (result.Ratings[1] !== undefined) {
                         let movieScore = result.Ratings[1].Value.slice(0, -1);
+                        let firstMovie = this.state.movieDetailsArray[0] || [];
+                        console.log('fist ID: ' + firstMovie.imdbID);
+                        console.log('this ID: ' + result.imdbID);
+                        if (
+                            firstMovie.length &&
+                            firstMovie[0].imdbID === result.imdbID
+                        ) {
+                            this.getMovieDetails();
+                        }
                         this.setState(prevState => {
                             return {
                                 movieDetailsArray: [
