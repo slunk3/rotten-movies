@@ -22,20 +22,20 @@ class MoviePanel extends React.Component {
     render() {
         let rottenScore = this.getScore();
         return (
-            <div className={wrapperClass}>
-                <h2>{this.props.movie.Title}</h2>
-                <h3 className="hide">{rottenScore}%</h3>
-                <div>
-                    {this.props.movie.Poster !== 'N/A' && (
-                        <img src={this.props.movie.Poster} />
-                    )}
-                    <Button
-                        score={rottenScore}
-                        value={this.props.movie.Title}
-                        compareMovieScores={this.props.compareMovieScores}
-                    />
+            <section className={wrapperClass}>
+                {this.props.movie.Poster !== 'N/A' && (
+                    <img src={this.props.movie.Poster} />
+                )}
+                <div className="movie-details">
+                    <h2>{this.props.movie.Title}</h2>
+                    <h3 className="hide tomato-score">{rottenScore}%</h3>
                 </div>
-            </div>
+                <Button
+                    score={rottenScore}
+                    value={this.props.movie.Title}
+                    compareMovieScores={this.props.compareMovieScores}
+                />
+            </section>
         );
     }
 }

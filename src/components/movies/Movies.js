@@ -10,12 +10,8 @@ class Movies extends React.Component {
     constructor(props) {
         super(props);
 
-        /* eslint-disable no-console */
-        console.log(movieData.length + ' movies in list');
-        /* eslint-enable no-console */
-
-        this.movieCount = constants.MOVIE_LIST_LENGTH;
         this.panels = constants.MOVIE_PANELS;
+        this.key = constants.OIMDB_KEY;
 
         this.state = {
             error: null,
@@ -39,10 +35,11 @@ class Movies extends React.Component {
         for (let i = 0; i < 2; i++) {
             this.getMovieDetails();
         }
+        this.handleAnswer();
     }
 
     getMovieName() {
-        let num = random(0, this.movieCount);
+        let num = random(0, movieData.length);
         return movieData[num];
     }
 
@@ -50,6 +47,11 @@ class Movies extends React.Component {
         let selectionScore = e.target.dataset.score;
         let challengeScore;
         let movieScores = this.state.movieScores;
+        let tomatoScore = document.querySelectorAll('.tomato-score');
+
+        tomatoScore.forEach(score => {
+            score.style.display = 'block';
+        });
 
         movieScores.map(score => {
             if (selectionScore !== score) {
@@ -67,27 +69,40 @@ class Movies extends React.Component {
         } else {
             this.handleSelection(-1);
         }
+
+        window.setTimeout(this.reloadChoices, 3000);
     }
 
     handleSelection(point) {
         this.props.onSelection(point);
     }
 
+    handleAnswer() {
+        this.props.resetScore();
+    }
+
     getMovieDetails() {
-        fetch('//www.omdbapi.com/?apikey=88165bfc&t=' + this.getMovieName())
+        fetch(
+            '//www.omdbapi.com/?apikey=' +
+                this.key +
+                '&t=' +
+                this.getMovieName()
+        )
             .then(r => r.json())
             .then(
                 result => {
-                    if (result.Ratings[1] !== undefined) {
+                    if (
+                        result.Response !== 'False' &&
+                        result.Ratings[1].Source == 'Rotten Tomatoes'
+                    ) {
                         let movieScore = result.Ratings[1].Value.slice(0, -1);
                         let firstMovie = this.state.movieDetailsArray[0] || [];
-                        console.log('fist ID: ' + firstMovie.imdbID);
-                        console.log('this ID: ' + result.imdbID);
+
                         if (
                             firstMovie.length &&
                             firstMovie[0].imdbID === result.imdbID
                         ) {
-                            this.getMovieDetails();
+                            return this.reloadChoices();
                         }
                         this.setState(prevState => {
                             return {
@@ -102,7 +117,9 @@ class Movies extends React.Component {
                             };
                         });
                     } else {
-                        return;
+                        // debugger;
+                        console.log(result);
+                        return this.reloadChoices();
                     }
                 },
                 error => {
@@ -113,7 +130,7 @@ class Movies extends React.Component {
 
     render() {
         return (
-            <section>
+            <main>
                 {this.state.movieDetailsArray.map(movie => {
                     if (this.state.movieDetailsArray.length) {
                         return (
@@ -125,13 +142,14 @@ class Movies extends React.Component {
                         );
                     }
                 })}
-            </section>
+            </main>
         );
     }
 }
 
 Movies.propTypes = {
     onSelection: PropTypes.func.isRequired,
+    resetScore: PropTypes.func.isRequired,
 };
 
 export default Movies;

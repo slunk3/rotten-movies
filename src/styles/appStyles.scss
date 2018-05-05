@@ -9,28 +9,54 @@ body {
 }
 
 .container {
-    padding: 25px;
+    width: 100%;
 }
 
 header {
+    background-color: $text-color;
+    color: #e5e7eb;
+    display: flex;
+    padding: 10px 1% 35px;
     width: 100%;
 
-    h1 {
-        font-size: 35px;
-        margin: 0;
-        text-transform: uppercase;
+    aside {
+        h1 {
+            font-size: 35px;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-size: 15px;
+            margin: 0;
+        }
     }
 
-    h2 {
-        font-size: 15px;
-        margin: 0;        
+    section {
+
+        .reloadMovies {
+            border: none;
+            border-radius: 2em;
+            background-color: #086788;
+            color: #e5e7eb;
+            margin-top: 30px;
+            padding: 10px 20px;
+            text-transform: uppercase;
+        }
+
+        span {
+            display: block;
+            margin-top: 12px;
+            font-size: 12px;
+        }
     }
 }
 
 main {
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-around;
+    flex-grow: 1;
+    padding-top: 35px;
 }
 
 section,
@@ -42,37 +68,33 @@ section {
     width: 75%;
 }
 
-aside {
-    text-align: center;
-    width: 25%;
-
-    .reloadMovies {
-        border: none;
-        background-color: #086788;
-        color: #e5e7eb;
-        margin-top: 30px;
-        padding: 10px 20px;
-        text-transform: uppercase;     
-    }
-
-    span {
-        display: block;
-        margin-top: 12px;
-        font-size: 12px;
-    }
-}
-
 .movie {
     display: inline-block;
     text-align: center;
     margin: 0 20px;
     width: 375px;
 
-    h2 {
-        font-size: 26px;
-        height: 65px;
-        text-align: left;
-        text-transform: uppercase;
+    .movie-details {
+        display: flex;
+        flex-flow: row wrap;
+        margin: 0 auto;
+        width: 380px;
+
+        h2 {
+            font-size: 16px;
+            height: 65px;
+            opacity: .5%;
+            text-align: left;
+            text-transform: uppercase;
+            width: 80%;
+        }
+
+        h3 {
+            color: red;
+            font-size: 14px;
+            text-align: right;
+            width: 20%;
+        }
     }
 
     img {
@@ -84,37 +106,41 @@ aside {
     .movie-btn {
         border: none;
         background-color: #dd1c1a;
+        cursor: pointer;
         color: #ffffff;
-        margin-top: 35px;
         padding: 10px 20px;
         text-transform: uppercase;
+        border-radius: 1.5rem;
     }
 }
 
 .playerCard {
-    background-color: #1966ff;
-    border: 3px solid #2b1579;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
     line-height: 1;
     text-transform: uppercase;
 
-    h3 {
+    small {
+        color: #086788;
+    }
+
+    h3, h4 {
         font-family: $game-font;
         font-size: 36px;
         letter-spacing: 4pt;
     }
 
-    .stats {
-        color: #adc9ff;        
-        font-size: 26px;
-        margin: 44px 0;
-
-        h4 {
-            color: #00ff5f;
-            font-family: $game-font;
-            font-size: 36px;
-            margin: 10px 0;
-        }
+    h4 {
+        color: #00ff5f;
     }
+
+}
+
+.answer {
+    display: block;
+    height: 35px;
+    text-align: center;
 }
 
 .hide {

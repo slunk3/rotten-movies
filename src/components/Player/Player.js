@@ -12,7 +12,6 @@ class Player extends React.Component {
             name: null,
         };
 
-        this.reloadChoices = this.reloadChoices.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
 
@@ -20,29 +19,15 @@ class Player extends React.Component {
         this.setState({ name: e.target.value });
     }
 
-    reloadChoices() {
-        this.props.onReload();
-    }
-
     render() {
         return (
-            <aside>
+            <section className="player-stats">
                 <PlayerCard
                     name={this.state.name}
                     playerScore={this.props.playerScore}
                     playerStreak={this.props.playerStreak}
                 />
-                <div>
-                    <button
-                        type="button"
-                        onClick={this.reloadChoices}
-                        className="reloadMovies"
-                    >
-                        Reload
-                    </button>
-                    <span>(will cost a life)</span>
-                </div>
-            </aside>
+            </section>
         );
     }
 }

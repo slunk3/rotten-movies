@@ -16,6 +16,7 @@ class App extends React.Component {
 
         this.handleScore = this.handleScore.bind(this);
         this.handleReload = this.handleReload.bind(this);
+        this.resetScore = this.resetScore.bind(this);
     }
 
     handleScore(point) {
@@ -48,35 +49,51 @@ class App extends React.Component {
     }
 
     handleReload() {
+        this._child.reloadChoices();
+        this.resetScore();
+    }
+
+    resetScore() {
         this.setState(prevState => {
             return {
                 isCorrect: null,
             };
         });
-
-        this._child.reloadChoices();
     }
 
     render() {
         return (
             <div className="container">
                 <header>
-                    <h1>Rotten Movies</h1>
-                    <h2>Pick the least rotten movie</h2>
-                    <Answer isCorrect={this.state.isCorrect} />
-                </header>
-                <main>
+                    <aside>
+                        <h1>Rotten Movies</h1>
+                        <h2>Pick the least rotten movie</h2>
+                        <div>
+                            <button
+                                type="button"
+                                onClick={this.handleReload}
+                                className="reloadMovies"
+                            >
+                                Reload
+                            </button>
+                            <span>(will cost a life)</span>
+                        </div>
+                    </aside>
                     <Player
                         playerScore={this.state.playerScore}
                         playerStreak={this.state.currentStreak}
                         onReload={this.handleReload}
+                        resetScore={this.resetScore}
                     />
-                    <Movies
-                        playerScore={this.state.playerScore}
-                        onSelection={this.handleScore}
-                        ref={child => (this._child = child)}
-                    />
-                </main>
+                </header>
+                <div className="answer">
+                    <Answer isCorrect={this.state.isCorrect} />
+                </div>
+                <Movies
+                    onSelection={this.handleScore}
+                    resetScore={this.resetScore}
+                    ref={child => (this._child = child)}
+                />
             </div>
         );
     }

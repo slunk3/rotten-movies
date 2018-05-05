@@ -16,7 +16,7 @@ class MovieButton extends React.Component {
                     onClick={this.props.compareMovieScores}
                     data-score={this.props.score}
                 >
-                    {this.props.value}
+                    SELECT
                 </button>
             </div>
         );

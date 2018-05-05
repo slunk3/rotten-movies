@@ -6,15 +6,16 @@ const PlayerCard = ({ name, playerScore, playerStreak }) => {
     return (
         <div className="playerCard">
             <div>
+                <small>Player 1</small>
                 <h3>AKB</h3>
             </div>
             <div className="stats">
-                Score
-                <h4>{playerScore}</h4>
+                <small>Score</small>
+                <h3>{playerScore}</h3>
             </div>
             <div className="stats">
-                Streak
-                <h4>{playerStreak}</h4>
+                <small>Streak</small>
+                <h3>{playerStreak}</h3>
             </div>
         </div>
     );
