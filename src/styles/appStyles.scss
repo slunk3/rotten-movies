@@ -16,7 +16,7 @@ header {
     background-color: $text-color;
     color: #e5e7eb;
     display: flex;
-    padding: 10px 1% 35px;
+    padding: .5em 1% 1em;
     width: 100%;
 
     aside {
@@ -56,7 +56,7 @@ main {
     display: flex;
     flex-flow: row wrap;
     flex-grow: 1;
-    padding-top: 35px;
+    padding-top: 1em;
 }
 
 section,
@@ -64,21 +64,16 @@ aside {
     flex-grow: 1;
 }
 
-section {
-    width: 75%;
-}
-
 .movie {
     display: inline-block;
     text-align: center;
     margin: 0 20px;
-    width: 375px;
 
     .movie-details {
         display: flex;
         flex-flow: row wrap;
         margin: 0 auto;
-        width: 380px;
+        width: 60%;
 
         h2 {
             font-size: 16px;
@@ -99,8 +94,8 @@ section {
 
     img {
         border: 5px solid $text-color;
-        height: 550px;
-        width: 370px;
+        height: auto;
+        width: 60%;
     }
 
     .movie-btn {
@@ -108,6 +103,7 @@ section {
         background-color: #dd1c1a;
         cursor: pointer;
         color: #ffffff;
+        margin-bottom: .75em;
         padding: 10px 20px;
         text-transform: uppercase;
         border-radius: 1.5rem;
@@ -129,6 +125,7 @@ section {
         font-family: $game-font;
         font-size: 36px;
         letter-spacing: 4pt;
+        margin: .5em 0;
     }
 
     h4 {
@@ -140,6 +137,7 @@ section {
 .answer {
     display: block;
     height: 35px;
+    position: absolute;
     text-align: center;
 }
 

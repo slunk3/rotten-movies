@@ -4,8 +4,6 @@ import ReactDom from 'react-dom';
 import MoviePage from '../App';
 import Button from './MovieButton';
 
-const wrapperClass = 'movie';
-
 class MoviePanel extends React.Component {
     constructor(props) {
         super(props);
@@ -22,7 +20,12 @@ class MoviePanel extends React.Component {
     render() {
         let rottenScore = this.getScore();
         return (
-            <section className={wrapperClass}>
+            <section className="movie">
+                <Button
+                    score={rottenScore}
+                    value={this.props.movie.Title}
+                    compareMovieScores={this.props.compareMovieScores}
+                />
                 {this.props.movie.Poster !== 'N/A' && (
                     <img src={this.props.movie.Poster} />
                 )}
@@ -30,11 +33,6 @@ class MoviePanel extends React.Component {
                     <h2>{this.props.movie.Title}</h2>
                     <h3 className="hide tomato-score">{rottenScore}%</h3>
                 </div>
-                <Button
-                    score={rottenScore}
-                    value={this.props.movie.Title}
-                    compareMovieScores={this.props.compareMovieScores}
-                />
             </section>
         );
     }
