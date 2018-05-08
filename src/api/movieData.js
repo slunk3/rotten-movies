@@ -241,7 +241,6 @@ module.exports = [
     'Virtuosity',
     'Jason X',
     'Ultraviolet',
-    'The Jazz Singer',
     'Valerian and the City of a Thousand Planets',
     'Superman IV: The Quest for Peace',
     'Second Sight',

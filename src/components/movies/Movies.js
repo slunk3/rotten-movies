@@ -117,7 +117,6 @@ class Movies extends React.Component {
                             };
                         });
                     } else {
-                        // debugger;
                         console.log(result);
                         return this.reloadChoices();
                     }
