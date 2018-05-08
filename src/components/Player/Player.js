@@ -26,6 +26,7 @@ class Player extends React.Component {
                     name={this.state.name}
                     playerScore={this.props.playerScore}
                     playerStreak={this.props.playerStreak}
+                    playerLives={this.props.playerLives}
                 />
             </section>
         );
@@ -35,6 +36,7 @@ class Player extends React.Component {
 Player.propTypes = {
     playerScore: PropTypes.number.isRequired,
     playerStreak: PropTypes.number.isRequired,
+    playerLives: PropTypes.number.isRequired,
     onReload: PropTypes.func.isRequired,
 };
 

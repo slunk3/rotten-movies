@@ -10,7 +10,8 @@ class App extends React.Component {
 
         this.state = {
             playerScore: 0,
-            currentStreak: 0,
+            playerStreak: 0,
+            playerLives: 3,
             isCorrect: null,
         };
 
@@ -21,7 +22,8 @@ class App extends React.Component {
 
     handleScore(point) {
         let score = this.state.playerScore + point;
-        let streak = this.state.currentStreak;
+        let streak = this.state.playerStreak;
+        let lives = this.state.playerLives;
         let correct = false;
 
         switch (point > 0) {
@@ -31,6 +33,7 @@ class App extends React.Component {
                 break;
             case false:
                 streak = 0;
+                lives--;
                 correct = false;
                 break;
             default:
@@ -42,7 +45,8 @@ class App extends React.Component {
         this.setState(prevState => {
             return {
                 playerScore: score,
-                currentStreak: streak,
+                playerStreak: streak,
+                playerLives: lives,
                 isCorrect: correct,
             };
         });
@@ -68,20 +72,21 @@ class App extends React.Component {
                     <aside>
                         <h1>Rotten Movies</h1>
                         <h2>Pick the least rotten movie</h2>
-                        <div>
-                            <button
-                                type="button"
-                                onClick={this.handleReload}
-                                className="reloadMovies"
-                            >
-                                Reload
-                            </button>
-                            <span>(will cost a life)</span>
-                        </div>
                     </aside>
+                    <section>
+                        <button
+                            type="button"
+                            onClick={this.handleReload}
+                            className="reload-movies"
+                        >
+                            Reload
+                        </button>
+                        <span>(will cost a life)</span>
+                    </section>
                     <Player
                         playerScore={this.state.playerScore}
-                        playerStreak={this.state.currentStreak}
+                        playerStreak={this.state.playerStreak}
+                        playerLives={this.state.playerLives}
                         onReload={this.handleReload}
                         resetScore={this.resetScore}
                     />
