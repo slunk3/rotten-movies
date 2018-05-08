@@ -1,9 +1,13 @@
 $theme-font: 'Roboto Mono', monospace;
 $game-font: 'Press Start 2P', cursive;
-$text-color: #222222;
+$text-color: #222;
+$gray: #e5e7eb;
+$blue: #086788;
+$red: #dd1c1a;
+$green: #00ff5f;
 
 body {
-    background-color: #e5e7eb;
+    background-color: $gray;
     color: $text-color;
     font-family: $theme-font;
 }
@@ -14,40 +18,40 @@ body {
 
 header {
     background-color: $text-color;
-    color: #e5e7eb;
+    color: $gray;
     display: flex;
     padding: .5em 1% 1em;
     width: 100%;
 
     aside {
         h1 {
-            font-size: 35px;
+            font-size: 2em;
             margin: 0;
             text-transform: uppercase;
         }
 
         h2 {
-            font-size: 15px;
+            font-size: .9em;
             margin: 0;
         }
+
     }
 
     section {
-
-        .reloadMovies {
-            border: none;
+        .reload-movies {
+            background-color: $blue;
+            border: 0;
             border-radius: 2em;
-            background-color: #086788;
-            color: #e5e7eb;
-            margin-top: 30px;
-            padding: 10px 20px;
+            color: $gray;
+            margin: 0 auto;
+            padding: 1em 2em;
             text-transform: uppercase;
         }
 
         span {
             display: block;
-            margin-top: 12px;
-            font-size: 12px;
+            margin-top: .75em;
+            font-size: .75em;
         }
     }
 }
@@ -67,17 +71,18 @@ aside {
 .movie {
     display: inline-block;
     text-align: center;
-    margin: 0 20px;
+    margin: 0 2em;
 
     .movie-details {
         display: flex;
         flex-flow: row wrap;
         margin: 0 auto;
+        max-width: 320px;
         width: 60%;
 
         h2 {
-            font-size: 16px;
-            height: 65px;
+            font-size: 1em;
+            height: 4em;
             opacity: .5%;
             text-align: left;
             text-transform: uppercase;
@@ -85,8 +90,8 @@ aside {
         }
 
         h3 {
-            color: red;
-            font-size: 14px;
+            color: $red;
+            font-size: .9em;
             text-align: right;
             width: 20%;
         }
@@ -95,22 +100,23 @@ aside {
     img {
         border: 5px solid $text-color;
         height: auto;
-        width: 60%;
+        max-width: 320px;
+        width: 100%;
     }
 
     .movie-btn {
-        border: none;
-        background-color: #dd1c1a;
+        background-color: $red;
+        border: 0;
+        border-radius: 1.5rem;
+        color: #fff;
         cursor: pointer;
-        color: #ffffff;
         margin-bottom: .75em;
         padding: 10px 20px;
         text-transform: uppercase;
-        border-radius: 1.5rem;
     }
 }
 
-.playerCard {
+.player-card {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
@@ -118,18 +124,18 @@ aside {
     text-transform: uppercase;
 
     small {
-        color: #086788;
+        color: $blue;
     }
 
     h3, h4 {
         font-family: $game-font;
         font-size: 36px;
-        letter-spacing: 4pt;
+        letter-spacing: 4px;
         margin: .5em 0;
     }
 
     h4 {
-        color: #00ff5f;
+        color: $green;
     }
 
 }
