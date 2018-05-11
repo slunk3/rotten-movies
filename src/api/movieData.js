@@ -75,7 +75,6 @@ module.exports = [
     'Antitrust',
     'Above the Law',
     'Hancock',
-    'The Perfect Storm',
     'Last Man Standing',
     'Twister',
     'Blind Fury',
