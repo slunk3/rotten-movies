@@ -78,7 +78,7 @@ class Movies extends React.Component {
     }
 
     handleAnswer() {
-        this.props.resetScore();
+        this.props.resetAnswer();
     }
 
     getMovieDetails() {
@@ -148,7 +148,7 @@ class Movies extends React.Component {
 
 Movies.propTypes = {
     onSelection: PropTypes.func.isRequired,
-    resetScore: PropTypes.func.isRequired,
+    resetAnswer: PropTypes.func.isRequired,
 };
 
 export default Movies;

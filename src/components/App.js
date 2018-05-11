@@ -17,7 +17,7 @@ class App extends React.Component {
 
         this.handleScore = this.handleScore.bind(this);
         this.handleReload = this.handleReload.bind(this);
-        this.resetScore = this.resetScore.bind(this);
+        this.resetAnswer = this.resetAnswer.bind(this);
     }
 
     handleScore(point) {
@@ -25,15 +25,21 @@ class App extends React.Component {
         let streak = this.state.playerStreak;
         let lives = this.state.playerLives;
         let correct = false;
+        let hearts = document.querySelector('.lives ul');
+        let answerContainer = document.querySelector('.answer');
 
         switch (point > 0) {
             case true:
                 streak++;
                 correct = true;
+                answerContainer.style.display = 'block';
                 break;
             case false:
                 streak = 0;
-                lives--;
+                if (lives > 0) {
+                    hearts.removeChild(hearts.childNodes[0]);
+                    lives--;
+                }
                 correct = false;
                 break;
             default:
@@ -54,10 +60,10 @@ class App extends React.Component {
 
     handleReload() {
         this._child.reloadChoices();
-        this.resetScore();
+        this.resetAnswer();
     }
 
-    resetScore() {
+    resetAnswer() {
         this.setState(prevState => {
             return {
                 isCorrect: null,
@@ -86,9 +92,7 @@ class App extends React.Component {
                     <Player
                         playerScore={this.state.playerScore}
                         playerStreak={this.state.playerStreak}
-                        playerLives={this.state.playerLives}
                         onReload={this.handleReload}
-                        resetScore={this.resetScore}
                     />
                 </header>
                 <div className="answer">
@@ -96,7 +100,7 @@ class App extends React.Component {
                 </div>
                 <Movies
                     onSelection={this.handleScore}
-                    resetScore={this.resetScore}
+                    resetAnswer={this.resetAnswer}
                     ref={child => (this._child = child)}
                 />
             </div>
