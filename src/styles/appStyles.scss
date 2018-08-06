@@ -1,6 +1,6 @@
 $theme-font: 'Roboto Mono', monospace;
 $game-font: 'Press Start 2P', cursive;
-$text-color: #222;
+$text-color: rgb(46, 46, 46);
 $gray: #e5e7eb;
 $blue: #086788;
 $red: #dd1c1a;
@@ -98,7 +98,7 @@ aside {
     }
 
     img {
-        border: 5px solid $text-color;
+        border: 2px solid $text-color;
         height: auto;
         max-width: 320px;
         width: 100%;
@@ -151,7 +151,7 @@ aside {
 
 }
 
-.answer {
+.alert {
     background-color: rgba(255, 255, 255, .5);
     display: none;
     position: absolute;
@@ -160,18 +160,21 @@ aside {
     width: 100%;
     height: 100%;
 
-    h3 {
+    .center {
         display: block;
-        font-size: 3em;
         height: 70px;
         left: 50%;
         margin-left: -250px;
         margin-top: -35px;
         position: absolute;
         text-align: center;
-        text-shadow: 3px 2px rgba(0, 0, 0, .5);
         top: 50%;
         width: 500px;
+    }
+
+    h3 {
+        font-size: 3.5rem;
+        text-shadow: 3px 2px rgba(0, 0, 0, .3);
     }
 }
 

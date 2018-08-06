@@ -19,8 +19,12 @@ class MoviePanel extends React.Component {
 
     render() {
         let rottenScore = this.getScore();
+        let displayMovies = 'block';
+        if (this.props.isGameOver) {
+            displayMovies = 'block';
+        }
         return (
-            <section className="movie">
+            <section className="movie" style={{ display: displayMovies }}>
                 <Button
                     score={rottenScore}
                     value={this.props.movie.Title}
@@ -31,7 +35,7 @@ class MoviePanel extends React.Component {
                 )}
                 <div className="movie-details">
                     <h2>{this.props.movie.Title}</h2>
-                    <h3 className="hide tomato-score">{rottenScore}%</h3>
+                    <h3 className=" tomato-score">{rottenScore}%</h3>
                 </div>
             </section>
         );
@@ -41,6 +45,7 @@ class MoviePanel extends React.Component {
 MoviePanel.propTypes = {
     movie: PropTypes.object.isRequired,
     compareMovieScores: PropTypes.func.isRequired,
+    isGameOver: PropTypes.bool,
 };
 
 export default MoviePanel;

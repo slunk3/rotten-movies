@@ -70,7 +70,6 @@ class Movies extends React.Component {
             this.handleSelection(-1);
         }
 
-        window.setTimeout(this.reloadChoices, 3000);
     }
 
     handleSelection(point) {
@@ -117,7 +116,6 @@ class Movies extends React.Component {
                             };
                         });
                     } else {
-                        console.log(result);
                         return this.reloadChoices();
                     }
                 },
@@ -137,6 +135,7 @@ class Movies extends React.Component {
                                 key={movie.imdbID}
                                 movie={movie}
                                 compareMovieScores={this.compareMovieScores}
+                                isGameOver={this.props.isGameOver}
                             />
                         );
                     }
@@ -149,6 +148,7 @@ class Movies extends React.Component {
 Movies.propTypes = {
     onSelection: PropTypes.func.isRequired,
     resetAnswer: PropTypes.func.isRequired,
+    isGameOver: PropTypes.bool,
 };
 
 export default Movies;
