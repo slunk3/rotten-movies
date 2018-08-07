@@ -35,7 +35,8 @@ class MoviePanel extends React.Component {
                 )}
                 <div className="movie-details">
                     <h2>{this.props.movie.Title}</h2>
-                    <h3 className=" tomato-score">{rottenScore}%</h3>
+                    <h3 className="hide tomato-score">{rottenScore}%</h3>
+                    <small>{this.props.movie.Plot}</small>
                 </div>
             </section>
         );

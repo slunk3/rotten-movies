@@ -39,7 +39,7 @@ class Movies extends React.Component {
     }
 
     getMovieName() {
-        let num = random(0, movieData.length);
+        let num = random(0, movieData.length - 1);
         return movieData[num];
     }
 
@@ -67,7 +67,7 @@ class Movies extends React.Component {
         } else if (challengeScore === selectionScore) {
             this.handleSelection(0);
         } else {
-            this.handleSelection(-1);
+            this.handleSelection(0);
         }
     }
 
@@ -91,15 +91,12 @@ class Movies extends React.Component {
                 result => {
                     if (
                         result.Response !== 'False' &&
-                        result.Ratings[1].Source == 'Rotten Tomatoes'
+                        result.Ratings[1].Source === 'Rotten Tomatoes'
                     ) {
                         let movieScore = result.Ratings[1].Value.slice(0, -1);
                         let firstMovie = this.state.movieDetailsArray[0] || [];
 
-                        if (
-                            firstMovie.length &&
-                            firstMovie[0].imdbID === result.imdbID
-                        ) {
+                        if (firstMovie.imdbID === result.imdbID) {
                             return this.reloadChoices();
                         }
                         this.setState(prevState => {

@@ -82,7 +82,6 @@ aside {
 
         h2 {
             font-size: 1em;
-            height: 4em;
             opacity: .5%;
             text-align: left;
             text-transform: uppercase;
@@ -94,6 +93,12 @@ aside {
             font-size: .9em;
             text-align: right;
             width: 20%;
+        }
+
+        small {
+            font-size: .75em;
+            font-style: italic;
+            text-align: left;
         }
     }
 
