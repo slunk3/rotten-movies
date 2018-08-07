@@ -4,6 +4,7 @@ import Movies from './movies/Movies';
 import Player from './player/Player';
 import Answer from './Answer';
 import GameOver from './GameOver';
+import * as constants from '../common/constants';
 
 class App extends React.Component {
     constructor(props) {
@@ -12,7 +13,7 @@ class App extends React.Component {
         this.state = {
             playerScore: 0,
             playerStreak: 0,
-            playerLives: 1,
+            playerLives: constants.PLAYER_LIVES,
             isCorrect: null,
             isGameOver: false,
         };
@@ -62,7 +63,6 @@ class App extends React.Component {
         } else {
             lives = 3;
         }
-
     }
 
     handleMovieReload() {
@@ -89,7 +89,7 @@ class App extends React.Component {
         if (lives === 0) {
             this.displayGameOverMsg();
         }
-        
+
         return lives;
     }
 
@@ -101,7 +101,6 @@ class App extends React.Component {
                 isGameOver: true,
             };
         });
-        console.log('lives: ' + this.state.playerLives);
     }
 
     render() {
@@ -131,8 +130,8 @@ class App extends React.Component {
                 </header>
                 <div className="alert">
                     <Answer isCorrect={this.state.isCorrect} />
-                    <GameOver 
-                        handleReload={this.handleMovieReload} 
+                    <GameOver
+                        handleReload={this.handleMovieReload}
                         isGameOver={this.state.isGameOver}
                     />
                 </div>
