@@ -12,15 +12,15 @@ class App extends React.Component {
         this.state = {
             playerScore: 0,
             playerStreak: 0,
-            playerLives: 3,
+            playerLives: 1,
             isCorrect: null,
             isGameOver: false,
         };
 
         this.handleScore = this.handleScore.bind(this);
-        this.handleReload = this.handleReload.bind(this);
+        this.handleMovieReload = this.handleMovieReload.bind(this);
         this.resetAnswer = this.resetAnswer.bind(this);
-        this.handleLives = this.handleLives.bind(this);
+        this.displayGameOverMsg = this.displayGameOverMsg.bind(this);
     }
 
     handleScore(point) {
@@ -58,14 +58,14 @@ class App extends React.Component {
         });
 
         if (lives > 0) {
-            window.setTimeout(this.handleReload, 3000);
+            window.setTimeout(this.handleMovieReload, 2000);
         } else {
-            window.setTimeout(this.resetAnswer, 3000);
+            lives = 3;
         }
 
     }
 
-    handleReload() {
+    handleMovieReload() {
         this._child.reloadChoices();
     }
 
@@ -83,15 +83,12 @@ class App extends React.Component {
         let hearts = document.querySelector('.lives ul');
 
         if (lives > 0) {
-            hearts.removeChild(hearts.childNodes[0]);
             lives--;
         }
 
         if (lives === 0) {
             this.displayGameOverMsg();
         }
-        
-        console.log('ALIOVE: ' + this.state.playerLives);
         
         return lives;
     }
@@ -100,13 +97,15 @@ class App extends React.Component {
         document.querySelector('.alert').style.display = 'block';
         this.setState(prevState => {
             return {
+                playerLives: 3,
                 isGameOver: true,
-            }
+            };
         });
+        console.log('lives: ' + this.state.playerLives);
     }
 
     render() {
-        return ( 
+        return (
             <div className="container">
                 <header>
                     <aside>
@@ -116,7 +115,7 @@ class App extends React.Component {
                     <section>
                         <button
                             type="button"
-                            onClick={this.handleReload}
+                            onClick={this.handleMovieReload}
                             className="reload-movies"
                         >
                             Reload
@@ -126,12 +125,16 @@ class App extends React.Component {
                     <Player
                         playerScore={this.state.playerScore}
                         playerStreak={this.state.playerStreak}
-                        onReload={this.handleReload}
+                        playerLives={this.state.playerLives}
+                        onReload={this.handleMovieReload}
                     />
                 </header>
                 <div className="alert">
                     <Answer isCorrect={this.state.isCorrect} />
-                    <GameOver isGameOver={this.state.isGameOver} />
+                    <GameOver 
+                        handleReload={this.handleMovieReload} 
+                        isGameOver={this.state.isGameOver}
+                    />
                 </div>
                 <Movies
                     onSelection={this.handleScore}

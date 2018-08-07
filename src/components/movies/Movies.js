@@ -69,7 +69,6 @@ class Movies extends React.Component {
         } else {
             this.handleSelection(-1);
         }
-
     }
 
     handleSelection(point) {
