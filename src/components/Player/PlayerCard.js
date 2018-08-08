@@ -8,7 +8,7 @@ class PlayerCard extends React.Component {
             <div className="player-card">
                 <div>
                     <small>Player 1</small>
-                    <h3>AKB</h3>
+                    <h3>{this.props.playerName}</h3>
                 </div>
                 <div className="lives">
                     <small>Lives:</small>
@@ -30,7 +30,7 @@ class PlayerCard extends React.Component {
 }
 
 PlayerCard.propTypes = {
-    name: PropTypes.string,
+    playerName: PropTypes.string,
     playerScore: PropTypes.number.isRequired,
     playerStreak: PropTypes.number.isRequired,
     playerLives: PropTypes.number.isRequired,

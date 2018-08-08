@@ -91,6 +91,7 @@ class Movies extends React.Component {
                 result => {
                     if (
                         result.Response !== 'False' &&
+                        result.Ratings[1] &&
                         result.Ratings[1].Source === 'Rotten Tomatoes'
                     ) {
                         let movieScore = result.Ratings[1].Value.slice(0, -1);

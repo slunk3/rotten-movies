@@ -1,9 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Movies from './movies/Movies';
 import Player from './player/Player';
 import Answer from './Answer';
 import GameOver from './GameOver';
+import CreatePlayer from './CreatePlayer';
 import * as constants from '../common/constants';
 
 class App extends React.Component {
@@ -11,6 +11,7 @@ class App extends React.Component {
         super(props);
 
         this.state = {
+            playerName: '',
             playerScore: 0,
             playerStreak: 0,
             playerLives: constants.PLAYER_LIVES,
@@ -22,6 +23,7 @@ class App extends React.Component {
         this.handleMovieReload = this.handleMovieReload.bind(this);
         this.resetAnswer = this.resetAnswer.bind(this);
         this.displayGameOverMsg = this.displayGameOverMsg.bind(this);
+        this.handleInitialsInput = this.handleInitialsInput.bind(this);
     }
 
     handleScore(point) {
@@ -61,7 +63,7 @@ class App extends React.Component {
         if (lives > 0) {
             window.setTimeout(this.handleMovieReload, 2000);
         } else {
-            lives = 3;
+            lives = constants.PLAYER_LIVES;
         }
     }
 
@@ -74,6 +76,7 @@ class App extends React.Component {
         this.setState(prevState => {
             return {
                 isCorrect: null,
+                isGameOver: false,
             };
         });
     }
@@ -88,6 +91,7 @@ class App extends React.Component {
 
         if (lives === 0) {
             this.displayGameOverMsg();
+            this.setState(this.initialState);
         }
 
         return lives;
@@ -97,10 +101,20 @@ class App extends React.Component {
         document.querySelector('.alert').style.display = 'block';
         this.setState(prevState => {
             return {
-                playerLives: 3,
+                playerLives: constants.PLAYER_LIVES,
                 isGameOver: true,
             };
         });
+        
+    }
+
+    handleInitialsInput(playerName) {
+        this.setState(prevState => {
+            return {
+                playerName
+            };
+        });
+        document.querySelector('.create-player-modal').style.display = 'none';
     }
 
     render() {
@@ -122,13 +136,17 @@ class App extends React.Component {
                         <span>(will cost a life)</span>
                     </section>
                     <Player
+                        playerName={this.state.playerName}
                         playerScore={this.state.playerScore}
                         playerStreak={this.state.playerStreak}
                         playerLives={this.state.playerLives}
                         onReload={this.handleMovieReload}
                     />
                 </header>
-                <div className="alert">
+                <div className="create-player-modal">
+                    <CreatePlayer initialsInput={this.handleInitialsInput} />
+                </div>
+                <div className="alert hide">
                     <Answer isCorrect={this.state.isCorrect} />
                     <GameOver
                         handleReload={this.handleMovieReload}
