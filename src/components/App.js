@@ -105,13 +105,12 @@ class App extends React.Component {
                 isGameOver: true,
             };
         });
-        
     }
 
     handleInitialsInput(playerName) {
         this.setState(prevState => {
             return {
-                playerName
+                playerName,
             };
         });
         document.querySelector('.create-player-modal').style.display = 'none';

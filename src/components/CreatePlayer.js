@@ -21,7 +21,8 @@ class CreatePlayer extends React.Component {
                 onSubmit={this.handleSubmit}
             >
                 <label htmlFor="intials">Enter player initials</label>
-                <input type="text"
+                <input
+                    type="text"
                     name="initials"
                     maxLength="3"
                     id="initials"
