@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactDom from 'react-dom';
-import MoviePanel from './MoviePanel';
 
 class MovieButton extends React.Component {
     constructor(props) {
@@ -12,11 +10,11 @@ class MovieButton extends React.Component {
         return (
             <div>
                 <button
-                    className="btn movie-btn"
+                    className="waves-effect waves-light btn-large"
                     onClick={this.props.compareMovieScores}
                     data-score={this.props.score}
                 >
-                    SELECT
+                    Select
                 </button>
             </div>
         );

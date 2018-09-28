@@ -1,14 +1,15 @@
 $theme-font: 'Roboto Mono', monospace;
 $game-font: 'Press Start 2P', cursive;
-$text-color: rgb(46, 46, 46);
-$gray: #e5e7eb;
-$blue: #086788;
-$red: #dd1c1a;
-$green: #00ff5f;
+$text-color: #254649;
+$white: #FFFFFF;
+$gray: #4E5758;
+$blue: #01579b;
+$red: #F71735;
+$green: #94D500;
 
 body {
-    background-color: $gray;
-    color: $text-color;
+    // background-color: $gray;
+    // color: $text-color;
     font-family: $theme-font;
 }
 
@@ -17,13 +18,14 @@ body {
 }
 
 header {
-    background-color: $text-color;
-    color: $gray;
+    background-color: $gray;
+    color: $white;
     display: flex;
-    padding: .5em 1% 1em;
-    width: 100%;
+    padding: .5em 3% 1em;
 
     aside {
+        margin-top: 2em;
+
         h1 {
             font-size: 2em;
             margin: 0;
@@ -31,7 +33,7 @@ header {
         }
 
         h2 {
-            font-size: .9em;
+            font-size: .7em;
             margin: 0;
         }
 
@@ -39,10 +41,8 @@ header {
 
     section {
         .reload-movies {
-            background-color: $blue;
             border: 0;
             border-radius: 2em;
-            color: $gray;
             margin: 0 auto;
             padding: 1em 2em;
             text-transform: uppercase;
@@ -89,7 +89,7 @@ aside {
         }
 
         h3 {
-            color: $red;
+            // color: $red;
             font-size: .9em;
             text-align: right;
             width: 20%;
@@ -103,21 +103,21 @@ aside {
     }
 
     img {
-        border: 2px solid $text-color;
         height: auto;
         max-width: 320px;
         width: 100%;
     }
 
-    .movie-btn {
-        background-color: $red;
-        border: 0;
-        border-radius: 1.5rem;
-        color: #fff;
+    .btn-large {
+        background-color: $green;
         cursor: pointer;
         margin-bottom: .75em;
-        padding: 10px 20px;
         text-transform: uppercase;
+    }
+
+    .tomato-score {
+        color: $red;
+        font-weight: bold;
     }
 }
 
@@ -128,23 +128,14 @@ aside {
     line-height: 1;
     text-transform: uppercase;
 
-    small {
-        color: $blue;
-    }
-
     h3, h4 {
-        font-family: $game-font;
-        font-size: 36px;
         letter-spacing: 4px;
         margin: .5em 0;
     }
 
-    h4 {
-        color: $green;
-    }
-
     .lives {
         ul {
+            margin-top: 33px;
             padding-left: 0;
 
             li {
@@ -158,7 +149,7 @@ aside {
 
 .alert,
 .create-player-modal {
-    background-color: rgba(255, 255, 255, .5);
+    background-color: rgba(255, 255, 255, .4);
     position: absolute;
     top: 0;
     left: 0;
@@ -166,6 +157,7 @@ aside {
     height: 100%;
 
     h3 {
+        color: $text-color;
         font-size: 3.5rem;
         text-shadow: 3px 2px rgba(0, 0, 0, .3);
     }
@@ -175,12 +167,12 @@ aside {
     display: block;
     height: auto;
     left: 50%;
-    margin-left: -200px;
+    margin-left: -150px;
     margin-top: -35px;
     position: absolute;
     text-align: center;
     top: 50%;
-    width: 400px;
+    width: 300px;
 }
 
 .hide {
@@ -188,10 +180,13 @@ aside {
 }
 
 .create-player-form {
-    background-color: $blue;
-    color: $gray;
-    padding: 0 1em;
-    box-shadow: 3px 2px rgba(0, 0, 0, .3);
+    background-color: $white;
+    padding: 1em;
+    box-shadow: 2px 1px 1px rgba(0, 0, 0, .3);
+
+    input[type=text] {
+        height: 50px;
+    }
 
     label,
     button {
@@ -199,10 +194,24 @@ aside {
         font-size: .75em;
         margin: 1em auto;
     }
+
     input {
         font-size: 1.5em;
         text-align: center;
         text-transform: uppercase;
         width: 100px;
+    }
+
+    button {
+        background-color: $green;
+        font-size: 1em;
+
+        &:hover {
+            background-color: $green;
+        }
+
+        &:disabled {
+            cursor: not-allowed;
+        }
     }
 }

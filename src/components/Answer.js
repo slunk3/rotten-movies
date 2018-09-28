@@ -6,9 +6,9 @@ const Answer = result => {
     let answer = result.isCorrect;
     if (answer !== null) {
         if (answer) {
-            return <h3 className="answer center">CORRECT!</h3>;
+            return <h3 className="answer center">You got it right!</h3>;
         } else {
-            return <h3 className="answer center">WRONG</h3>;
+            return <h3 className="answer center">So wrong.</h3>;
         }
     } else {
         return null;

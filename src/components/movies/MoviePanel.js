@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactDom from 'react-dom';
-import MoviePage from '../App';
 import Button from './MovieButton';
 
 class MoviePanel extends React.Component {
@@ -35,7 +33,9 @@ class MoviePanel extends React.Component {
                 )}
                 <div className="movie-details">
                     <h2>{this.props.movie.Title}</h2>
-                    <h3 className="hide tomato-score">{rottenScore}%</h3>
+                    <h3 className="tomato-score" style={{ display: 'none' }}>
+                        {rottenScore}%
+                    </h3>
                     <small>{this.props.movie.Plot}</small>
                 </div>
             </section>

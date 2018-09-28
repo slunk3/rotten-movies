@@ -161,7 +161,7 @@ module.exports = [
     'Howard the Duck',
     'Demolition Man',
     'Sharknado 3: Oh Hell No!',
-    'Sharknado: The 4th Awakens',
+    'Sharknado 4',
     'Sharknado 5: Global Swarming',
     'Crocodile Dundee in Los Angeles',
     'Gymkata',
@@ -248,4 +248,6 @@ module.exports = [
     'Adore',
     'Geostorm',
     'Beautiful Creatures',
+    'Dark Tide',
+    'Shark Night 3D',
 ];

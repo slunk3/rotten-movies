@@ -124,16 +124,6 @@ class App extends React.Component {
                         <h1>Rotten Movies</h1>
                         <h2>Pick the least rotten movie</h2>
                     </aside>
-                    <section>
-                        <button
-                            type="button"
-                            onClick={this.handleMovieReload}
-                            className="reload-movies"
-                        >
-                            Reload
-                        </button>
-                        <span>(will cost a life)</span>
-                    </section>
                     <Player
                         playerName={this.state.playerName}
                         playerScore={this.state.playerScore}
@@ -145,7 +135,7 @@ class App extends React.Component {
                 <div className="create-player-modal">
                     <CreatePlayer initialsInput={this.handleInitialsInput} />
                 </div>
-                <div className="alert hide">
+                <div className="alert" style={{ display: 'none' }}>
                     <Answer isCorrect={this.state.isCorrect} />
                     <GameOver
                         handleReload={this.handleMovieReload}
